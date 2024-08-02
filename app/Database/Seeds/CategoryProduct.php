@@ -9,20 +9,19 @@ class CategoryProduct extends Seeder
     public function run()
     {
         $categoryProductModel = new \App\Models\CategoryProduct();
-        $encrypter = \Config\Services::encrypter();
         $data = [
             [
-                'name_categoryProduct' => $encrypter->encrypt('Arabika')
+                'name_categoryProduct' => 'Arabika'
             ],
             [
-                'name_categoryProduct' => $encrypter->encrypt('Robusta')
+                'name_categoryProduct' => 'Robusta'
             ],
             [
-                'name_categoryProduct' => $encrypter->encrypt('Liberica')
+                'name_categoryProduct' => 'Liberica'
             ],
         ];
         foreach ($data as $category) {
-            $categoryProductModel->save($category);
+            $categoryProductModel->addCategoryProduct($category);
         }
     }
 }

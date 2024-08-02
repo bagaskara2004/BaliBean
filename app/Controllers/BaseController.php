@@ -21,6 +21,15 @@ use Psr\Log\LoggerInterface;
  */
 abstract class BaseController extends Controller
 {
+    protected $title = 'Bali Bean';
+    protected $shopModel;
+    protected $categoryProductModel;
+    protected $productModel;
+    protected $mediaModel;
+    protected $promotionModel;
+    protected $userModel;
+    protected $validation;
+    protected $session;
     /**
      * Instance of the main Request object.
      *
@@ -52,7 +61,16 @@ abstract class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
+        // models
+        $this->shopModel = new \App\Models\Shop();
+        $this->categoryProductModel = new \App\Models\CategoryProduct();
+        $this->productModel = new \App\Models\Product();
+        $this->mediaModel = new \App\Models\Media();
+        $this->promotionModel = new \App\Models\Promotion();
+        $this->userModel = new \App\Models\User();
 
-        // E.g.: $this->session = \Config\Services::session();
+        //libraries
+        $this->validation = \Config\Services::validation();
+        $this->session = \Config\Services::session();
     }
 }

@@ -30,8 +30,7 @@ class Shop extends Migration
                 'constraint' => '200',
             ],
             'maps' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '500',
+                'type'       => 'TEXT',
             ],
             'password' => [
                 'type'       => 'VARCHAR',

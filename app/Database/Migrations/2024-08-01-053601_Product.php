@@ -24,8 +24,7 @@ class Product extends Migration
                 'constraint' => '200',
             ],
             'description_product' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '1000',
+                'type'       => 'TEXT',
             ],
             'photo_product' => [
                 'type'       => 'VARCHAR',

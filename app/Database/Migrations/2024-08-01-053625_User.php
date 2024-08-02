@@ -25,8 +25,7 @@ class User extends Migration
                 'constraint' => '200',
             ],
             'comment' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '1000',
+                'type'       => 'TEXT',
             ],
             'post' => [
                 'type'       => 'BOOLEAN',

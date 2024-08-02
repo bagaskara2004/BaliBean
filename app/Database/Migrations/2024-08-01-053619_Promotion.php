@@ -21,8 +21,7 @@ class Promotion extends Migration
                 'constraint' => '200',
             ],
             'description_promotion' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '1000',
+                'type'       => 'Text',
             ],
             'photo_promotion' => [
                 'type'       => 'VARCHAR',
