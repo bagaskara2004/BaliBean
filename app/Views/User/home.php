@@ -161,7 +161,7 @@
             <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
                 <h5 class="section-title ff-secondary text-start text-primary fw-normal">SUBSCRIBE</h5>
                 <h1 class="text-white mb-4">Give Your Opinion</h1>
-                <form method="post" action="/user">
+                <form method="post" action="/adduser">
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">

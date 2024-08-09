@@ -146,6 +146,18 @@ class User extends Model
         }
     }
 
+    public function cekUser($email)
+    {
+        $users = $this->findAll();
+        $exist = False;
+        foreach ($users as $user) {
+            if ($this->encrypter->decrypt($user['email']) == $email) {
+                $exist = True;
+            }
+        }
+        return $exist;
+    }
+
     private function decryptDataUser($data)
     {
         return [

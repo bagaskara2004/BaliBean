@@ -30,6 +30,7 @@ abstract class BaseController extends Controller
     protected $userModel;
     protected $validation;
     protected $session;
+    protected $idShop = 1;
     /**
      * Instance of the main Request object.
      *

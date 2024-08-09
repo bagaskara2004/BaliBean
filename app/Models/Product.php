@@ -55,16 +55,9 @@ class Product extends Model
     {
         $data = $this->join('categoryproduct', 'product.id_categoryProduct = categoryproduct.id_categoryProduct')->find($id);
         if (!$data) {
-            return [
-                'status' => false,
-                'msg' => 'Product ID ' . $id . ' Tidak Ditemukan'
-            ];
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Product ID ' . $id . ' Tidak Ditemukan');
         }
-        return [
-            'status' => true,
-            'msg' => 'Product ID ' . $id . ' Ditemukan',
-            'data' => $this->decryptDataProduct($data)
-        ];
+        return $this->decryptDataProduct($data);
     }
 
     public function getProductByRecomended()

@@ -57,16 +57,9 @@ class Promotion extends Model
     {
         $data = $this->find($id);
         if (!$data) {
-            return [
-                'status' => false,
-                'msg' => 'Promotion ID ' . $id . ' Tidak Ditemukan'
-            ];
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Promotion ID ' . $id . ' Tidak Ditemukan');
         }
-        return [
-            'status' => true,
-            'msg' => 'Product ID ' . $id . ' Ditemukan',
-            'data' => $this->decryptDataPromotion($data)
-        ];
+        return $this->decryptDataPromotion($data);
     }
 
     public function addPromotion($datas)
