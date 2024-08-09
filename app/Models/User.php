@@ -67,6 +67,26 @@ class User extends Model
         ];
     }
 
+    public function getUserByPost() {
+        $data = $this->where('post',true)->findAll();
+        if (!$data) {
+            return [
+                'status' => false,
+                'msg' => 'User Tidak Ditemukan'
+            ];
+        }
+        $results = [];
+        foreach ($data as $user) {
+            $results[] = $this->decryptDataUser($user,true);
+        }
+
+        return [
+            'status' => true,
+            'msg' => 'User Ditemukan',
+            'data' => $results
+        ];
+    }
+
     public function addUser($datas)
     {
         $data = $this->encryptDataUser($datas);

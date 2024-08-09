@@ -42,7 +42,7 @@ class Product extends Model
         }
         $results = [];
         foreach ($datas as $data) {
-            $results[] = $this->decryptDataProduct($data);
+            $results[] = $this->decryptDataProduct($data,true);
         }
         return [
             'status' => true,
@@ -67,9 +67,9 @@ class Product extends Model
         ];
     }
 
-    public function getProductByRecomended($value = null)
+    public function getProductByRecomended()
     {
-        $datas = $this->join('categoryproduct', 'product.id_categoryProduct = categoryproduct.id_categoryProduct')->where('recomended', $value)->findAll();
+        $datas = $this->join('categoryproduct', 'product.id_categoryProduct = categoryproduct.id_categoryProduct')->where('recomended', true)->findAll();
         if (!$datas) {
             return [
                 'status' => false,
@@ -78,7 +78,7 @@ class Product extends Model
         }
         $results = [];
         foreach ($datas as $data) {
-            $results[] = $this->decryptDataProduct($data);
+            $results[] = $this->decryptDataProduct($data,true);
         }
 
         return [
@@ -147,13 +147,30 @@ class Product extends Model
         }
     }
 
-    private function decryptDataProduct($data)
+    public function convertDescription($teks)
     {
+        if (strlen($teks) > 100) {
+            $newTeks = '';
+            for ($i = 0; $i < 100; $i++) {
+                $newTeks .= $teks[$i];
+            }
+            return $newTeks . '....';
+        }
+        return $teks;
+    }
+
+    private function decryptDataProduct($data,$convert = false)
+    {
+        if ($convert) {
+            $decription = $this->convertDescription($this->encrypter->decrypt($data['description_product']));
+        }else{
+            $decription = $this->encrypter->decrypt($data['description_product']);
+        }
         return [
             'id_product' => $data['id_product'],
             'id_categoryProduct' => $data['id_categoryProduct'],
             'name_product' => $this->encrypter->decrypt($data['name_product']),
-            'description_product' => $this->encrypter->decrypt($data['description_product']),
+            'description_product' => $decription,
             'photo_product' => $this->encrypter->decrypt($data['photo_product']),
             'price_product' => 'Rp.' . $data['price_product'],
             'recomended' => $data['recomended'],

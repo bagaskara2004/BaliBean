@@ -26,16 +26,9 @@ class Shop extends Model
     {
         $data = $this->find($id);
         if (!$data) {
-            return [
-                'status' => false,
-                'msg' => 'Shop ID ' . $id . ' Tidak Ditemukan'
-            ];
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Shop Tidak Ditemukan');
         }
-        return [
-            'status' => true,
-            'msg' => 'Shop ID ' . $id . ' Ditemukan',
-            'data' => $this->decryptDataShop($data)
-        ];
+        return $this->decryptDataShop($data);
     }
 
     public function getShopByEmail($email = '')
