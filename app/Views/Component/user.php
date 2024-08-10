@@ -55,9 +55,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
-                        <?= $navbar ?>
+                        <?= $this->renderSection('Navbar') ?>
                     </div>
-                    <a href="/auth" class="btn btn-primary py-2 px-4">Login</a>
+                    <a href="/login" class="btn btn-primary py-2 px-4">Login</a>
                 </div>
             </nav>
             <?= $this->renderSection('Banner') ?>
@@ -84,10 +84,11 @@
                         <p class="mb-2"><i class="fa fa-phone me-3"></i><?= $dataShop['telp'] ?></p>
                         <p class="mb-2"><i class="fa fa-envelope me-3"></i><?= $dataShop['email'] ?></p>
                         <div class="d-flex pt-2">
-                            <?php if ($media['status']) {?>
-                            <?php foreach ($media['data'] as $data) {?>
-                            <a class="btn btn-outline-light btn-social" href="<?=$data['link_media']?>"><i class="fab fa-<?=$data['name_media']?>"></i></a>
-                            <?php }}?>
+                            <?php if ($media['status']) { ?>
+                                <?php foreach ($media['data'] as $data) { ?>
+                                    <a class="btn btn-outline-light btn-social" href="<?= $data['link_media'] ?>"><i class="fab fa-<?= $data['name_media'] ?>"></i></a>
+                            <?php }
+                            } ?>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -121,7 +122,7 @@
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-        
+
         <div class="position-fixed bottom-0 start-0">
             <?php if (session()->getFlashdata('erorr')) { ?>
                 <div class="alert alert-danger alert-dismissible fade show m-1" role="alert">
@@ -136,7 +137,7 @@
                 </div>
             <?php } ?>
         </div>
-        
+
     </div>
 
     <!-- JavaScript Libraries -->

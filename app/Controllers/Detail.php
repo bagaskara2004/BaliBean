@@ -11,7 +11,6 @@ class Detail extends BaseController
     {
         $data = [
             'title' => $this->title,
-            'navbar' => '<a href="/" class="nav-item nav-link">Home</a><a href="/about" class="nav-item nav-link">About</a><a href="/product" class="nav-item nav-link">Product</a><a href="/gallery" class="nav-item nav-link">Gallery</a>',
             'dataShop' => $this->shopModel->getShopById($this->idShop),
             'dataProduct' => $this->productModel->getProductById($id),
             'media' => $this->mediaModel->getAllMedia(),
@@ -26,9 +25,7 @@ class Detail extends BaseController
             'dataShop' => $this->shopModel->getShopById($this->idShop),
             'dataPromotion' => $this->promotionModel->getPromotionById($id),
             'media' => $this->mediaModel->getAllMedia(),
-            'navbar' => '<a href="/" class="nav-item nav-link">Home</a><a href="/about" class="nav-item nav-link">About</a><a href="/product" class="nav-item nav-link">Product</a><a href="/gallery" class="nav-item nav-link">Gallery</a>',
         ];
         return view('User/detailPromotion', $data);
-        echo $id;
     }
 }

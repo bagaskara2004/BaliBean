@@ -1,4 +1,9 @@
 <?= $this->extend('Component/user.php') ?>
+
+<?= $this->section('Navbar') ?>
+<a href="/" class="nav-item nav-link">Home</a><a href="/about" class="nav-item nav-link">About</a><a href="/product" class="nav-item nav-link">Product</a><a href="/gallery" class="nav-item nav-link active">Gallery</a>
+<?= $this->endSection() ?>
+
 <?= $this->section('Banner') ?>
 <div class="container-fluid py-5 bg-dark hero-header mb-5">
     <div class="container text-center my-5 pt-5 pb-4">

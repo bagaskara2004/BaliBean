@@ -39,10 +39,7 @@ class Shop extends Model
                 return $this->getShopById($data['id_shop']);
             }
         }
-        return [
-            'status' => false,
-            'msg' => 'Shop Tidak Ditemukan',
-        ];
+        return false;
     }
 
     public function addShop($datas)

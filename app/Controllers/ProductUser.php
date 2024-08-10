@@ -11,7 +11,6 @@ class ProductUser extends BaseController
     {
         $data = [
             'title' => $this->title,
-            'navbar' => '<a href="/" class="nav-item nav-link">Home</a><a href="/about" class="nav-item nav-link">About</a><a href="/product" class="nav-item nav-link active">Product</a><a href="/gallery" class="nav-item nav-link">Gallery</a>',
             'dataShop' => $this->shopModel->getShopById(1),
             'dataCategoryProduct' => $this->categoryProductModel->getAllCategoryProduct(),
             'dataProduct' => $this->productModel->getAllProduct(),

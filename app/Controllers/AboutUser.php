@@ -11,7 +11,7 @@ class AboutUser extends BaseController
     {
         $data = [
             'title' => $this->title,
-            'navbar' => '<a href="/" class="nav-item nav-link">Home</a><a href="/about" class="nav-item nav-link active">About</a><a href="/product" class="nav-item nav-link">Product</a><a href="/gallery" class="nav-item nav-link">Gallery</a>',
+            'navbar' => '',
             'dataShop' => $this->shopModel->getShopById(1),
             'media' => $this->mediaModel->getAllMedia(),
             'totalProduct' => $this->productModel->countAllResults(),
