@@ -55,16 +55,9 @@ class CategoryProduct extends Model
     {
         $data = $this->find($id);
         if (!$data) {
-            return [
-                'status' => false,
-                'msg' => 'CategoryProduct ID ' . $id . ' Tidak Ditemukan'
-            ];
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('CategoryProduct ID ' . $id . ' Tidak Ditemukan');
         }
-        return [
-            'status' => true,
-            'msg' => 'CategoryProduct ID ' . $id . ' Ditemukan',
-            'data' => $this->decryptDataCategoryProduct($data)
-        ];
+        return $this->decryptDataCategoryProduct($data);
     }
 
     public function addCategoryProduct($datas)

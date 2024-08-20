@@ -14,5 +14,14 @@ $routes->get('/promotion/(:num)', 'Detail::promotion/$1');
 $routes->get('/login', 'Auth::index');
 $routes->post('/login', 'Auth::login');
 
+$routes->get('/dashboard','PageAdmin::index');
+$routes->get('/category','PageAdmin::categoryProduct');
+$routes->get('/formCategory','PageAdmin::formCategory');
+$routes->get('/formCategory/(:num)','PageAdmin::formCategory/$1');
+$routes->get('/logout','Auth::logout');
+$routes->post('/addCategory','CategoryProduct::addCategory');
+$routes->post('/editCategory','CategoryProduct::editCategory');
+$routes->get('/deleteCategory/(:num)','CategoryProduct::deleteCategory/$1');
+
 
 $routes->post('/adduser', 'HomeUser::addUser');
